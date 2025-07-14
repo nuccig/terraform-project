@@ -3,6 +3,9 @@
 ```bash
 sudo docker container run -it --name terraform -v "$(pwd):/mnt/curso-terraform" --entrypoint /bin/sh hashicorp/terraform
 ```
+```bash
+terraform init chdir=path/to/folder
+```
 
 ## 📋 Índice
 - [Comandos Básicos](#comandos-básicos)
