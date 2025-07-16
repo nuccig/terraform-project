@@ -1,7 +1,7 @@
 # Principais Comandos do Terraform
 
 ```bash
-sudo docker container run -it --name terraform -v "$(pwd):/mnt/curso-terraform" --entrypoint /bin/sh hashicorp/terraform
+sudo docker container run -it --name terraform -v "$(pwd):/mnt/terraform-project" --entrypoint /bin/sh hashicorp/terraform
 ```
 ```bash
 terraform init chdir=path/to/folder
