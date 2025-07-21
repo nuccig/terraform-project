@@ -1,0 +1,36 @@
+name: Validate Terraform
+
+on:
+  push:
+    paths:
+      - pipeline-terraform/**
+
+jobs:
+
+  validate:
+    name: Validate Terraform Configuration
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_version: 1.5.0
+
+      - name: Init Terraform
+        run: terraform init
+
+      - name: Validate Terraform configuration
+        run: terraform validate
+
+      - name: Format Terraform configuration
+        run: terraform fmt -check
+
+      - name: Plan Terraform configuration
+        run: terraform plan
