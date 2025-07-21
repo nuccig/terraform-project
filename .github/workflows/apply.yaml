@@ -1,9 +1,12 @@
 name: Apply Terraform
 
 on:
-  push:
-    paths:
-      - pipeline-terraform/**
+  workflow_run:
+    workflows: ["Validate Terraform"]
+    types:
+      - completed
+    branches:
+      - main
 
 jobs:
 
@@ -13,18 +16,13 @@ jobs:
     defaults:
       run:
         shell: bash
+        working-directory: ./pipeline-terraform
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up Terraform
-        uses: hashicorp/setup-terraform@v1
-        with:
-          terraform_version: 1.5.0
-    
       - name: Init Terraform
-        run: terraform init
-
-      - name: Apply Terraform configuration
-        run: terraform apply -auto-approve
+        run: |
+          terraform init
+          terraform apply -auto-approve

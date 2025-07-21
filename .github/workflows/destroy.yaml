@@ -5,23 +5,18 @@ on: workflow_dispatch
 jobs:
 
   destroy:
-    name: Destroy Terraform Resources
+    name: Destroy Terraform Configuration
     runs-on: ubuntu-latest
     defaults:
       run:
         shell: bash
+        working-directory: ./pipeline-terraform
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up Terraform
-        uses: hashicorp/setup-terraform@v1
-        with:
-          terraform_version: 1.5.0
-
       - name: Init Terraform
-        run: terraform init
-
-      - name: Apply Terraform configuration
-        run: terraform destroy -auto-approve
+        run: |
+          terraform init
+          terraform destroy -auto-approve
