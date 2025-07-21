@@ -1,0 +1,1 @@
+VPC ID: vpc-069fd64798a2a0c89, Subnet IDs: subnet-054c2fc3968220e27, subnet-081788180f4a24372, subnet-0af29d6d49be0628f
