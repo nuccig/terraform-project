@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - pipeline-terraform/**
+      - .github/workflows/**
 
 jobs:
 
