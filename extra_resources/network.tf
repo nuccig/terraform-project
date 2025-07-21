@@ -40,12 +40,3 @@ resource "terraform_data" "example_data" {
   # output     = "example_output"
 }
 
-#Funciona como um bloco de testes
-check "check_example" {
-
-  assert {
-    condition     = length(aws_subnet.subnet) == 0
-    error_message = "Subnets criadas são maiores que zero."
-  }
-
-}
